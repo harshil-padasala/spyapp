@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Cool Spy App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h1 style="text-align: center;">Our Super Cool Spy App</h1>
+
+<section style="text-align: center;">
+    <h2>Create a Mission</h2>
+    <button onclick="createMission()" class="btn btn-primary">Create Mission</button>
+</section>
+<section style="text-align: center;">
+    <h2>View Missions For</h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form th:action="@{/spy/view-missions}" th:method="post">
+                    <div class="form-group">
+                        <select name="agent" class="form-control">
+                            <option th:each="agent : ${agents}" th:text="${agent}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Go!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function createMission() {
+        // Get the selected agent name from the dropdown
+        var agentName = document.querySelector('select[name="agent"]').value;
+        // Redirect to the create-mission page with the selected agent name
+        window.location.href = '/spy/create-mission?agent=' + encodeURIComponent(agentName);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missions for Natasha Romanova</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 class="text-center">Here are the missions for <span th:text="${agent}"></span></h1>
+
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Mission Title</th>
+                <th>Gadget 1</th>
+                <th>Gadget 2</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="mission: ${missions}">
+                <td th:text="${mission.title}"></td>
+                <td th:text="${mission.gadget1}"></td>
+                <td th:text="${mission.gadget2}"></td>
+                <td>
+                    <a th:href="@{/spy/edit-mission/{id}(id=${mission.id})}" class="btn btn-primary">Edit</a>
+                    <a th:href="@{/spy/delete-mission/{id}(id=${mission.id})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="text-center"><a href="/spy/index" class="btn btn-primary">Back to Home</a></p>
+</div>
+
+</body>
+</html>

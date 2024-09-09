@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Mission</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h1 style="text-align: center;">Create the Mission</h1>
+
+<div style="text-align: center;">
+    <form th:action="@{/spy/create-mission}" th:object="${mission}" th:method="post">
+        <label for="missionTitle">Mission Title:</label>
+        <input type="text" id="missionTitle" name="title"><br>
+
+        <label>Agent:</label>
+        <select name="agent">
+            <option th:each="agents : ${agents}" th:text="${agents}"></option>
+        </select>
+
+        <h2 style="text-align: center;">Enter the gadgets</h2>
+
+        <label for="gadget1">Gadget 1:</label>
+        <input type="text" id="gadget1" name="gadget1"><br>
+
+        <label for="gadget2">Gadget 2:</label>
+        <input type="text" id="gadget2" name="gadget2"><br>
+
+        <button type="submit" class="btn btn-primary">Create Mission</button>
+    </form>
+</div>
+<p style="text-align: center;"><a href="/spy/index">Back to Home</a></p>
+</body>
+</html>
