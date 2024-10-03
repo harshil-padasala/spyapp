@@ -4,20 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Missions for Natasha Romanova</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
     <style>
         body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
             padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        a.button-danger {
+            background-color: #dc3545;
+        }
+
+        a.button:hover {
+            background-color: #0056b3;
+        }
+
+        a.button-danger:hover {
+            background-color: #c82333;
+        }
+
+        .text-center {
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-<h1 class="text-center">Here are the missions for <span th:text="${agent}"></span></h1>
+<h1>Here are the missions for <span th:text="${agent}"></span></h1>
 
 <div class="container">
-    <table class="table table-bordered table-striped">
+    <table>
         <thead>
             <tr>
                 <th>Mission Title</th>
@@ -32,14 +99,14 @@
                 <td th:text="${mission.gadget1}"></td>
                 <td th:text="${mission.gadget2}"></td>
                 <td>
-                    <a th:href="@{/spy/edit-mission/{id}(id=${mission.id})}" class="btn btn-primary">Edit</a>
-                    <a th:href="@{/spy/delete-mission/{id}(id=${mission.id})}" class="btn btn-danger">Delete</a>
+                    <a th:href="@{/spy/edit-mission/{id}(id=${mission.id})}" class="button">Edit</a>
+                    <a th:href="@{/spy/delete-mission/{id}(id=${mission.id})}" class="button button-danger">Delete</a>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <p class="text-center"><a href="/spy/index" class="btn btn-primary">Back to Home</a></p>
+    <p class="text-center"><a href="/spy/index" class="button">Back to Home</a></p>
 </div>
 
 </body>
