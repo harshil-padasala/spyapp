@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -57,8 +58,8 @@ public class HomeController {
     }
 
     @PostMapping("/create-mission")
-    public String createMission(@ModelAttribute Mission mission, Model model, HttpServletRequest request) {
-        String selectedAgent = (String) request.getSession().getAttribute("agent");
+    public String createMission(@ModelAttribute Mission mission, Model model, @RequestParam("selectedAgent") String selectedAgent, HttpServletRequest request) {
+        System.out.println("======"+selectedAgent+"++++++");
         if (selectedAgent != null && !selectedAgent.isEmpty()) {
             mission.setAgent(selectedAgent);
             missionJDBC.createMission(mission);
