@@ -9,6 +9,6 @@ CREATE TABLE mission (
 
 INSERT INTO mission (agent, title, gadget1, gadget2)
 VALUES
-    ('Johnny English', 'Rescue the Queen', 'Exploding Sigar', 'Voice Controlled Rolls Royce'),
-    ('Natasha Romanova', 'Kill Iron Man', 'Armored Suit', 'Industructible Pole'),
-    ('Austin Powers', '', 'Red, White and Blue Shaguar', 'Mini Cooper');
+    ('Johnny English', 'Rescue the Queen', 'Exploding Cigar', 'Voice-Controlled Rolls-Royce'),
+    ('Natasha Romanova', 'Kill Iron Man', 'Advanced Armored Suit', 'Indestructible Baton'),
+    ('Austin Martins', 'Mission Groovetopia', 'Red, White, and Blue Shaguar', 'Groovy Mini Cooper');
