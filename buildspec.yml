@@ -1,0 +1,40 @@
+version: 0.2
+
+env:
+  variables:
+    JAVA_HOME: "/usr/lib/jvm/java-21"
+    SPRING_PROFILES_ACTIVE: "prod" # Set your Spring profile here if needed
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto21 # You can use other versions such as corretto17 if required
+    commands:
+      - echo "Installing dependencies..."
+      - ./mvnw clean install -DskipTests
+
+  pre_build:
+    commands:
+      - echo "Pre-build stage..."
+      - ./mvnw validate
+      - echo "Project validation complete."
+
+  build:
+    commands:
+      - echo "Building the project..."
+      - ./mvnw package -DskipTests
+      - echo "Build complete."
+
+  post_build:
+    commands:
+      - echo "Post-build stage..."
+      - echo "Build successful!"
+
+artifacts:
+  files:
+    - target/*.jar # This assumes your JAR file is created in the target directory
+  discard-paths: yes
+
+cache:
+  paths:
+    - ~/.m2/**/* # Cache Maven dependencies to speed up future builds
